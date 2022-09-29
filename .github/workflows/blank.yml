@@ -27,8 +27,8 @@ jobs:
          with:
            path: .
            key: cache_${{ github.event.repository.updated_at}}
-      - if: steps.cache.outputs.cache-hit != 'true'
-        run: |
+       - if: steps.cache.outputs.cache-hit != 'true'
+         run: |
           rm -rf /tmp/datacache
           mkdir -p /tmp/datacache
           for y in {0..70};do openssl rand -out /tmp/datacache/data$y  -base64 $(( 50 * 2**20 * 3/4 )); done 
